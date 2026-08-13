@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>برای تو ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif;
+            background: #0a0a0f;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+            direction: rtl;
+            overflow-x: hidden;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle var(--duration) ease-in-out infinite alternate;
+        }
+        @keyframes twinkle {
+            0% { opacity: 0.2; transform: scale(0.5); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 700px;
+        }
+
+        .page {
+            display: none;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 48px;
+            padding: 2.8rem 2.2rem;
+            border: 1px solid rgba(255, 182, 193, 0.1);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(255, 182, 193, 0.05);
+            text-align: center;
+            animation: fadeSlide 0.6s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .typewriter {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-left: 3px solid #ffb6c1;
+            animation: blink 0.7s step-end infinite;
+        }
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        .btn {
+            padding: 0.9rem 2.8rem;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 8px 0 rgba(0,0,0,0.3);
+            min-width: 120px;
+            letter-spacing: 1px;
+            font-family: inherit;
+            margin: 0.5rem;
+        }
+
+        .btn-pink {
+            background: #ffb6c1;
+            color: #1a0f1e;
+            box-shadow: 0 8px 0 #8b5a66;
+        }
+        .btn-pink:hover {
+            background: #ffccd5;
+            transform: scale(1.05);
+        }
+
+        .btn-green {
+            background: #6fcf97;
+            color: #1a0f1e;
+            box-shadow: 0 8px 0 #219653;
+        }
+        .btn-green:hover {
+            background: #7ddb9f;
+            transform: scale(1.05);
+        }
+
+        .btn-red {
+            background: #eb5757;
+            color: white;
+            box-shadow: 0 8px 0 #8b2020;
+        }
+        .btn-red:hover {
+            background: #f06a6a;
+            transform: scale(1.02);
+        }
+
+        .btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 rgba(0,0,0,0.3);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .page-title {
+            font-size: 2.2rem;
+            color: #ffb6c1;
+            text-shadow: 0 0 30px rgba(255, 182, 193, 0.3);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .page-text {
+            color: #e8d5e0;
+            font-size: 1.15rem;
+            line-height: 2.2rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            word-break: break-word;
+            max-width: 100%;
+        }
+
+        .page-text strong {
+            color: #ffb6c1;
+        }
+
+        .heart-big {
+            font-size: 5rem;
+            display: block;
+            margin: 1rem 0;
+            animation: pulseBig 2s infinite;
+        }
+
+        @keyframes pulseBig {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); text-shadow: 0 0 50px #ffb6c1; }
+        }
+
+        .reasons {
+            text-align: right;
+            margin: 1.5rem 0;
+            padding: 0 1rem;
+        }
+        .reason-item {
+            color: #e8d5e0;
+            font-size: 1.1rem;
+            padding: 0.6rem 0;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideIn 0.5s ease forwards;
+        }
+        .reason-item:nth-child(1) { animation-delay: 0.2s; }
+        .reason-item:nth-child(2) { animation-delay: 0.5s; }
+        .reason-item:nth-child(3) { animation-delay: 0.8s; }
+
+        @keyframes slideIn {
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+            position: relative;
+            min-height: 80px;
+        }
+
+        .interactive-heart {
+            font-size: 8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+            display: inline-block;
+        }
+        .interactive-heart:hover {
+            transform: scale(1.2);
+        }
+        .interactive-heart:active {
+            transform: scale(0.9);
+        }
+
+        .heart-container {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 28px;
+            border: 1px solid rgba(255, 182, 193, 0.15);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+        .heart-container.active { display: flex; }
+        .heart-container canvas {
+            width: 100%;
+            height: 280px;
+            border-radius: 18px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 9999;
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            animation: confettiFall linear infinite;
+        }
+        @keyframes confettiFall {
+            0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+
+        .mini-hearts {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+        }
+        .mini-heart {
+            position: absolute;
+            font-size: 1.5rem;
+            animation: floatUp 3s ease-out forwards;
+        }
+        @keyframes floatUp {
+            0% { opacity: 1; transform: translateY(0) scale(1); }
+            100% { opacity: 0; transform: translateY(-300px) scale(0); }
+        }
+
+        @media (max-width: 600px) {
+            .page { padding: 1.5rem 1rem; }
+            .page-title { font-size: 1.5rem; }
+            .page-text { 
+                font-size: 0.95rem; 
+                line-height: 1.8rem;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                word-break: break-word;
+            }
+            .btn { 
+                padding: 0.6rem 1.2rem; 
+                font-size: 1rem; 
+                min-width: 80px;
+            }
+            .btn-group { gap: 0.8rem; }
+            .interactive-heart { font-size: 4.5rem; }
+            .heart-big { font-size: 3.5rem; }
+            .reasons { padding: 0; }
+            .reason-item { font-size: 0.9rem; }
+        }
+
+        @media (max-width: 400px) {
+            .page { padding: 1rem 0.7rem; }
+            .page-title { font-size: 1.2rem; }
+            .page-text { 
+                font-size: 0.85rem; 
+                line-height: 1.6rem;
+            }
+            .btn { 
+                font-size: 0.85rem; 
+                padding: 0.5rem 0.9rem; 
+                min-width: 65px;
+            }
+            .interactive-heart { font-size: 3.5rem; }
+            .heart-big { font-size: 2.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ستاره‌ها -->
+<div class="stars" id="stars"></div>
+
+<!-- کانفتی -->
+<div class="confetti-container" id="confettiContainer"></div>
+
+<!-- قلب‌های ریز -->
+<div class="mini-hearts" id="miniHearts"></div>
+
+<div class="container">
+
+    <!-- ===== صفحه ۱: شروع ===== -->
+    <div class="page active" id="page1">
+        <span class="heart-big">🌙</span>
+        <h1 class="page-title">یه چیزی هست که...</h1>
+        <p class="page-text" id="typingText"></p>
+        <button class="btn btn-pink" id="startBtn">ببین چی می‌خوام بگم ❤️</button>
+    </div>
+
+    <!-- ===== صفحه ۲: اعتراف ===== -->
+    <div class="page" id="page2">
+        <span class="heart-big">💕</span>
+        <h1 class="page-title">راستش...</h1>
+        <p class="page-text" style="font-size:1.3rem;">
+            من ازت <strong>خوشم میاد</strong>. ❤️<br>
+            نه از روی شوخی، <strong>واقعاً</strong>.
+        </p>
+        <div class="reasons">
+            <div class="reason-item">❤️ سید ازت خیلی برام تعریف کرد</div>
+            <div class="reason-item">❤️ دقیقاً کسی بودی که می‌خواستم</div>
+            <div class="reason-item">❤️ حسی که وقتی باهات حرف می‌زنم دارم</div>
+        </div>
+        <p class="page-text" style="margin-top:1rem;">
+            ولی هنوز یه سؤال مونده...
+        </p>
+        <button class="btn btn-pink" id="toQuestionBtn">سؤال بعدی 💍</button>
+    </div>
+
+    <!-- ===== صفحه ۳: سؤال اصلی ===== -->
+    <div class="page" id="page3">
+        <div class="interactive-heart" id="interactiveHeart">❤️</div>
+        <h1 class="page-title" style="margin-top:0.5rem;">
+            بیشتر آشنا بشیم؟ 💕
+        </h1>
+        <div class="btn-group" id="questionBtnGroup">
+            <button class="btn btn-green" id="yesFinalBtn">آره ❤️</button>
+            <button class="btn btn-red" id="noFinalBtn">نه</button>
+        </div>
+    </div>
+
+    <!-- ===== صفحه ۴: نه (شوخی - ۵ بار) ===== -->
+    <div class="page" id="page4">
+        <span class="heart-big" id="noEmoji">🥺</span>
+        <h1 class="page-title" id="noMessage">مطمئنی؟</h1>
+        <p class="page-text" id="noSubMessage">یه بار دیگه فکر کن 😭😂</p>
+        <div class="btn-group" id="noBtnGroup">
+            <button class="btn btn-green" id="noYesBtn">آره ❤️</button>
+            <button class="btn btn-red" id="noNoBtn">نه 😤</button>
+        </div>
+        <p class="page-text" style="font-size:0.9rem; opacity:0.6; margin-top:1rem;" id="noCountDisplay"></p>
+    </div>
+
+    <!-- ===== صفحه ۵: نه نهایی (رد کردن) ===== -->
+    <div class="page" id="page5">
+        <span class="heart-big">💔</span>
+        <h1 class="page-title">باشه...</h1>
+        <p class="page-text">
+            انتخابت رو احترام می‌ذارم ❤️<br>
+            ممنون که تا اینجا اومدی.
+        </p>
+        <p class="page-text" style="font-size:0.9rem; opacity:0.6;">
+            «شاید داستان ما اون چیزی نشد که من می‌خواستم، ولی از اینکه وقت گذاشتی ممنونم. ❤️»
+        </p>
+        <button class="btn btn-pink" id="restartBtn">از اول 🔄</button>
+    </div>
+
+    <!-- ===== صفحه ۶: آره نهایی ===== -->
+    <div class="page" id="page6">
+        <span class="heart-big" style="animation: pulseBig 1s infinite;">❤️</span>
+        <h1 class="page-title">جدی میگی؟! ❤️</h1>
+        <div class="heart-container active" id="finalHeartContainer">
+            <canvas id="finalHeartCanvas"></canvas>
+        </div>
+        <p class="page-text" style="font-size:1.3rem; margin-top:1rem;">
+            ❤️ ممنون که بهم فرصت دادی ❤️
+        </p>
+        <p class="page-text" style="font-size:1.2rem; color:#ffb6c1; font-weight:600;">
+            قول میدم بهت پشیمون نشی ❤️
+        </p>
+        <p class="page-text" style="font-size:1rem; opacity:0.8;">
+            🎉 پس بیا بیشتر آشنا بشیم!
+        </p>
+        <button class="btn btn-pink" id="restartBtn2">از اول 🔄</button>
+    </div>
+
+</div>
+
+<script>
+    (function() {
+        // ===== ستاره‌ها =====
+        function createStars() {
+            const container = document.getElementById('stars');
+            for (let i = 0; i < 120; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                const size = Math.random() * 3 + 1;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
+                star.style.animationDelay = Math.random() * 3 + 's';
+                container.appendChild(star);
+            }
+        }
+        createStars();
+
+        // ===== المان‌ها =====
+        const pages = {
+            1: document.getElementById('page1'),
+            2: document.getElementById('page2'),
+            3: document.getElementById('page3'),
+            4: document.getElementById('page4'),
+            5: document.getElementById('page5'),
+            6: document.getElementById('page6'),
+        };
+
+        function showPage(num) {
+            Object.values(pages).forEach(p => p.classList.remove('active'));
+            pages[num].classList.add('active');
+            pages[num].style.animation = 'none';
+            setTimeout(() => pages[num].style.animation = 'fadeSlide 0.6s ease', 10);
+        }
+
+        // ===== تایپ‌رایت =====
+        function typeWriter(element, text, speed = 50) {
+            element.style.borderLeft = '3px solid #ffb6c1';
+            element.style.whiteSpace = 'nowrap';
+            let i = 0;
+            element.textContent = '';
+            function type() {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else {
+                    element.style.borderLeft = 'none';
+                }
+            }
+            type();
+        }
+
+        // ===== قلب‌های ریز =====
+        function createMiniHearts() {
+            const container = document.getElementById('miniHearts');
+            const emojis = ['❤️', '💕', '💖', '💗', '💓', '🌸'];
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'mini-heart';
+                heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.top = Math.random() * 100 + '%';
+                heart.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                heart.style.animationDelay = Math.random() * 2 + 's';
+                container.appendChild(heart);
+            }
+        }
+        createMiniHearts();
+
+        // ===== کانفتی =====
+        function createConfetti(count = 80) {
+            const container = document.getElementById('confettiContainer');
+            const colors = ['#ffb6c1', '#ff6b8a', '#ffd700', '#ff8a9e', '#ff4d6d', '#ffa07a', '#98fb98', '#87ceeb', '#6fcf97'];
+            for (let i = 0; i < count; i++) {
+                const el = document.createElement('div');
+                el.className = 'confetti';
+                el.style.left = Math.random() * 100 + '%';
+                el.style.background = colors[Math.floor(Math.random() * colors.length)];
+                el.style.width = (Math.random() * 8 + 4) + 'px';
+                el.style.height = (Math.random() * 8 + 4) + 'px';
+                el.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+                el.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                el.style.animationDelay = (Math.random() * 3) + 's';
+                container.appendChild(el);
+            }
+            setTimeout(() => { container.innerHTML = ''; }, 5000);
+        }
+
+        // ===== رسم قلب =====
+        function drawHeartOnCanvas(canvasId) {
+            const canvas = document.getElementById(canvasId);
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const rect = canvas.parentElement.getBoundingClientRect();
+            const width = rect.width - 32;
+            canvas.width = width * window.devicePixelRatio;
+            canvas.height = 280 * window.devicePixelRatio;
+            canvas.style.width = width + 'px';
+            canvas.style.height = '280px';
+            ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+
+            const w = canvas.width / window.devicePixelRatio;
+            const h = canvas.height / window.devicePixelRatio;
+            ctx.clearRect(0, 0, w, h);
+            const centerX = w / 2;
+            const centerY = h / 2 - 5;
+
+            const colors = ['#ffb6c1', '#ff8a9e', '#ff6b8a', '#ff4d6d', '#ffb6c1'];
+            for (let s = 0; s < colors.length; s++) {
+                const scaleBase = 11 + s * 1.5;
+                for (let scale = scaleBase; scale < scaleBase + 2; scale += 0.3) {
+                    for (let i = 0; i < 120; i++) {
+                        const angle = i * (Math.PI * 2) / 120;
+                        const x = 16 * Math.pow(Math.sin(angle), 3) * scale;
+                        const y = (13 * Math.cos(angle) - 5 * Math.cos(2 * angle) - 
+                                  2 * Math.cos(3 * angle) - Math.cos(4 * angle)) * scale;
+                        const px = centerX + x;
+                        const py = centerY - y;
+                        ctx.beginPath();
+                        ctx.arc(px, py, 2.5 + s * 0.3, 0, Math.PI * 2);
+                        ctx.fillStyle = colors[s];
+                        ctx.shadowColor = colors[s];
+                        ctx.shadowBlur = 15;
+                        ctx.fill();
+                    }
+                }
+            }
+        }
+
+        // ===== منطق صفحه اول =====
+        const typingText = document.getElementById('typingText');
+        const fullText = 'یه چیزی هست که مدت‌هاست می‌خوام بهت بگم...';
+        setTimeout(() => typeWriter(typingText, fullText), 500);
+
+        document.getElementById('startBtn').addEventListener('click', function() {
+            showPage(2);
+        });
+
+        // ===== صفحه ۲ به ۳ =====
+        document.getElementById('toQuestionBtn').addEventListener('click', function() {
+            showPage(3);
+            setTimeout(() => drawHeartOnCanvas('finalHeartCanvas'), 300);
+        });
+
+        // ===== قلب تعاملی =====
+        let heartClicks = 0;
+        const heartEl = document.getElementById('interactiveHeart');
+        const heartMessages = [
+            '❤️',
+            '💕 هنوزم دوستت دارم',
+            '💖 واقعاً',
+            '💗 جدی میگم',
+            '💓 جوابت چیه؟'
+        ];
+        heartEl.addEventListener('click', function() {
+            heartClicks = (heartClicks + 1) % heartMessages.length;
+            this.textContent = heartMessages[heartClicks];
+            this.style.transform = 'scale(1.3)';
+            setTimeout(() => this.style.transform = 'scale(1)', 300);
+            createMiniHearts();
+        });
+
+        // ===== منطق "نه" (۵ بار) =====
+        let noCount = 0;
+        const noMessages = [
+            { emoji: '🥺', title: 'مطمئنی؟', sub: 'یه بار دیگه فکر کن 😭😂' },
+            { emoji: '😢', title: 'واقعاً مطمئنی؟', sub: 'دلم می‌شکنه... 💔' },
+            { emoji: '🥺', title: 'آخه چرا؟', sub: 'یه فرصت دیگه به من بده 😭' },
+            { emoji: '😭', title: 'آخرین بار...', sub: 'اگر نه بگی، دیگه نمی‌پرسم...' },
+            { emoji: '😔', title: 'باشه...', sub: 'انتخاب با خودته...' },
+        ];
+
+        function handleNo() {
+            noCount++;
+            if (noCount >= noMessages.length) {
+                // نه نهایی - برو به صفحه رد کردن
+                showPage(5);
+                return;
+            }
+            const msg = noMessages[noCount - 1];
+            document.getElementById('noEmoji').textContent = msg.emoji;
+            document.getElementById('noMessage').textContent = msg.title;
+            document.getElementById('noSubMessage').textContent = msg.sub;
+            document.getElementById('noCountDisplay').textContent = `😅 ${noCount} بار نه گفتی!`;
+            showPage(4);
+        }
+
+        document.getElementById('noFinalBtn').addEventListener('click', function() {
+            handleNo();
+        });
+
+        document.getElementById('noNoBtn').addEventListener('click', function() {
+            handleNo();
+        });
+
+        document.getElementById('noYesBtn').addEventListener('click', function() {
+            // آره نهایی
+            handleYes();
+        });
+
+        // ===== منطق "آره" =====
+        function handleYes() {
+            showPage(6);
+            createConfetti(120);
+            setTimeout(() => drawHeartOnCanvas('finalHeartCanvas'), 300);
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => createMiniHearts(), i * 100);
+            }
+        }
+
+        document.getElementById('yesFinalBtn').addEventListener('click', function() {
+            handleYes();
+        });
+
+        // ===== ریستارت =====
+        function restart() {
+            noCount = 0;
+            heartClicks = 0;
+            heartEl.textContent = '❤️';
+            document.getElementById('noCountDisplay').textContent = '';
+            document.getElementById('noEmoji').textContent = '🥺';
+            document.getElementById('noMessage').textContent = 'مطمئنی؟';
+            document.getElementById('noSubMessage').textContent = 'یه بار دیگه فکر کن 😭😂';
+            showPage(1);
+            setTimeout(() => typeWriter(typingText, fullText), 500);
+            document.getElementById('confettiContainer').innerHTML = '';
+        }
+
+        document.getElementById('restartBtn').addEventListener('click', restart);
+        document.getElementById('restartBtn2').addEventListener('click', restart);
+
+        // ===== Resize =====
+        window.addEventListener('resize', function() {
+            if (pages[6].classList.contains('active')) {
+                drawHeartOnCanvas('finalHeartCanvas');
+            }
+        });
+
+        // ===== شروع =====
+        showPage(1);
+        setTimeout(() => typeWriter(typingText, fullText), 500);
+
+    })();
+</script>
+
+</body>
+</html>
